@@ -1,8 +1,6 @@
 import read_vcf
 import sample_major_format
-import similarity_search
-import shared_sites
-import mann_whitney_u
+import faiss_ss
 import sys
 import numpy as np
 
@@ -32,21 +30,10 @@ def main():
 
     # make (transform) genotype data the input data to similarity search
     print('\nConducting similarity search on transposed genotypes...')
-    match_indices_flatL2 = similarity_search.flatL2(smf, queries, k)
+    match_indices_flatL2 = faiss_ss.flatL2(smf, queries, k)
     # print(match_indices_flatL2)
-    # match_indices_inner_product = similarity_search.inner_product(smf, queries, k)
+    # match_indices_inner_product = faiss_ss.inner_product(smf, queries, k)
     # print(match_indices_inner_product)
-
-
-    # shared sites
-    print('\nComputing number of shared sites between query and proposed matches...')
-    all_shared_sites = shared_sites.all_sample_shared_sites(queries, smf)
-    indices_shared_sites = shared_sites.sort_shared_sites_percentages(all_shared_sites)
-
-    # mann whitney u test
-    print('\nComputing Man Whitney U Test for all queries...')
-    sorted_p_value_indices = mann_whitney_u.mann_whitney_u_all_queries(queries, smf)
-    for s in sorted_p_value_indices: print(s)
 
     print('\nEnd.')
 
