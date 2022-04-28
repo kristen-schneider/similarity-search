@@ -1,7 +1,7 @@
 
-map /home/krsc0813/toy_data/plink/hundred.map
+map /home/krsc0813/toy_data/plink/hundred_thousand.map
 
-ped /home/krsc0813/toy_data/plink/hundred.ped
+ped /home/krsc0813/toy_data/plink/hundred_thousand.ped
 
 output /home/krsc0813/similarity-search/iLASH/output.match
 
