@@ -7,13 +7,18 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 
-from scripts import sample_major_format
+from scripts import read_map_file
 
 
-class TestSampleMajorFormat(unittest.TestCase):
+class TestReadMapFile(unittest.TestCase):
 
-    def test_transpose_data(self):
-        self.assertNotEqual(sample_major_format.transpose_data(self.db1), self.smf2)
+    map_file = '/home/krsc0813/toy_data/plink/simple.map'
+    kmers = [[],
+             [], 
+             []]
+
+    def test_cm_kmers(self):
+        self.assertEqusl(read_map_file).cm_kmers(self.map_filee), self.all_kmers)
 
 if __name__ == '__main__':
     unittest.main()
